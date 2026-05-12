@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://knpyu4diu354"]
+
+[ext_resource type="Script" uid="uid://ds88wlq1tispu" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c0312vmfyjlxp" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dicemmmntbfad" path="res://virus.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=313631685]
+script = ExtResource("1_0xm2m")
+
+[node name="Player" parent="." unique_id=903970340 instance=ExtResource("1_ig7tw")]
+
+[node name="Virus" parent="." unique_id=1297634187 instance=ExtResource("3_h2yge")]
+
+[node name="Timer" type="Timer" parent="." unique_id=797721426]
+autostart = true
+
+[connection signal="body_entered" from="Virus" to="." method="_on_virus_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

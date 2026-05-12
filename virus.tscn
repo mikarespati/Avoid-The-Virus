@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dicemmmntbfad"]
+
+[ext_resource type="Script" uid="uid://ds88wlq1tispu" path="res://main.gd" id="1_8fg0l"]
+[ext_resource type="PackedScene" uid="uid://c0312vmfyjlxp" path="res://player.tscn" id="1_8v58v"]
+[ext_resource type="Script" uid="uid://dfrf74ertmqjv" path="res://virus.gd" id="2_8fg0l"]
+[ext_resource type="Texture2D" uid="uid://cqrhijk523o5d" path="res://icon.svg" id="3_1xnis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_043we"]
+size = Vector2(55, 48)
+
+[node name="Main" type="Node2D" unique_id=933862035]
+script = ExtResource("1_8fg0l")
+
+[node name="Player" parent="." unique_id=207693466 instance=ExtResource("1_8v58v")]
+position = Vector2(81, 158)
+
+[node name="Virus" type="Area2D" parent="." unique_id=361164098]
+script = ExtResource("2_8fg0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Virus" unique_id=1326504590]
+position = Vector2(602, 70)
+scale = Vector2(0.4140625, 0.375)
+texture = ExtResource("3_1xnis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Virus" unique_id=185183183]
+position = Vector2(601.5, 70)
+shape = SubResource("RectangleShape2D_043we")
+
+[node name="Timer" type="Timer" parent="." unique_id=194386558]
+autostart = true
