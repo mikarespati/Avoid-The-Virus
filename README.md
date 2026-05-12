@@ -18,7 +18,7 @@ Simple 2D dodge game built with Godot Engine.
 - Simple game over system
 
 ## Screenshot
-(Add screenshot here)
+![alt text](image.png)
 
 ## Future Updates
 - Score system
@@ -31,4 +31,3 @@ Simple 2D dodge game built with Godot Engine.
 Mika Respati
 Chill to use
 
-![alt text](image.png)
