@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d0aemiygwxkdk"]
+
+[ext_resource type="Script" uid="uid://bt77e8orn3fxr" path="res://splash_screen.gd" id="1_el3v4"]
+[ext_resource type="Texture2D" uid="uid://bht2fawr1dgev" path="res://splash screen.png" id="2_arguk"]
+
+[node name="Splashscreen" type="Control" unique_id=1534114987]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_el3v4")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1697230344]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 1157.0
+offset_bottom = 649.0
+texture = ExtResource("2_arguk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Timer" type="Timer" parent="." unique_id=815750374]
+wait_time = 3.0
+one_shot = true
+autostart = true

@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Avoid The Virus"
-run/main_scene="uid://knpyu4diu354"
+run/main_scene="uid://cewpobkut2oax"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bht2fawr1dgev"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
 
 [physics]
 

@@ -1,18 +1,74 @@
 [gd_scene format=3 uid="uid://c0312vmfyjlxp"]
 
-[ext_resource type="Script" uid="uid://bdawfoguq8nas" path="res://character_body_2d.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cqrhijk523o5d" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://dlylonkl6e03s" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://h4mds8d8l4dx" path="res://karakter.png" id="2_i3pqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 0, 256, 219)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(256, 219, 256, 219)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 219, 256, 219)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(256, 0, 256, 219)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 657, 256, 219)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jxqw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(129.5, 131)
+size = Vector2(130.375, 151.75)
 
 [node name="Player" type="CharacterBody2D" unique_id=903970340]
 script = ExtResource("1_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1498245980]
-position = Vector2(520, 333)
-texture = ExtResource("2_i3pqv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1614348428]
+position = Vector2(563, 369)
+scale = Vector2(0.93359375, 0.80593604)
+sprite_frames = SubResource("SpriteFrames_1jxqw")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1934905509]
-position = Vector2(520.25, 332.5)
+position = Vector2(588.1875, 373.875)
 shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="ShootCooldown" type="Timer" parent="." unique_id=1709067486]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

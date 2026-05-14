@@ -3,16 +3,130 @@
 [ext_resource type="Script" uid="uid://ds88wlq1tispu" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c0312vmfyjlxp" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dicemmmntbfad" path="res://virus.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://biw5mxsuscobm" path="res://backgroundingame.png" id="4_1bvp3"]
+[ext_resource type="FontFile" uid="uid://dksex2dkoh4ut" path="res://Orbitron-VariableFont_wght.ttf" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=313631685]
 script = ExtResource("1_0xm2m")
 
+[node name="background" type="TextureRect" parent="." unique_id=1781340057]
+offset_right = 1678.9904
+offset_bottom = 942.096
+scale = Vector2(0.6867222, 0.6888894)
+texture = ExtResource("4_1bvp3")
+expand_mode = 1
+
 [node name="Player" parent="." unique_id=903970340 instance=ExtResource("1_ig7tw")]
+position = Vector2(0, 6)
+scale = Vector2(1.1355028, 1.0926355)
 
 [node name="Virus" parent="." unique_id=1297634187 instance=ExtResource("3_h2yge")]
+position = Vector2(77, 41)
 
 [node name="Timer" type="Timer" parent="." unique_id=797721426]
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=572775672]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1817307153]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.9137255, 0.35686275, 0.60784316, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "Score 0"
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2060974006]
+process_mode = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=1643203277]
+offset_left = 417.0
+offset_top = 154.0
+offset_right = 767.0
+offset_bottom = 404.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel" unique_id=200196300]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 253.0
+offset_bottom = 205.0
+
+[node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer" unique_id=520613069]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="Restart" type="Button" parent="PauseMenu/Panel/VBoxContainer" unique_id=75898146]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[node name="Exit" type="Button" parent="PauseMenu/Panel/VBoxContainer" unique_id=73577943]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="GameOverUI" type="CanvasLayer" parent="." unique_id=2116975510]
+process_mode = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="GameOverUI" unique_id=1070966034]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 440.0
+offset_bottom = 240.0
+
+[node name="Label" type="Label" parent="GameOverUI/Panel" unique_id=1377257607]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.014599986, 0.73, 0.18152666, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverUI/Panel" unique_id=133177523]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 63.0
+offset_right = 392.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "FINAL SCORE : 0"
+
+[node name="Restart" type="Button" parent="GameOverUI/Panel" unique_id=1576395150]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 117.0
+offset_right = 213.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 28
+text = "RESTART"
+
+[node name="MainMenu" type="Button" parent="GameOverUI/Panel" unique_id=169670908]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 165.0
+offset_right = 266.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 28
+text = "MAIN MENU"
+
 [connection signal="body_entered" from="Virus" to="." method="_on_virus_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GameOverUI/Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverUI/Panel/MainMenu" to="." method="_on_main_menu_pressed"]

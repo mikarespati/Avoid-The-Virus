@@ -1,21 +1,41 @@
 [gd_scene format=3 uid="uid://dicemmmntbfad"]
 
 [ext_resource type="Script" uid="uid://dfrf74ertmqjv" path="res://virus.gd" id="1_ifgnm"]
-[ext_resource type="Texture2D" uid="uid://cqrhijk523o5d" path="res://icon.svg" id="2_8v58v"]
+[ext_resource type="Texture2D" uid="uid://ihaopowwcntr" path="res://virus.png" id="2_ifgnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v58v"]
+atlas = ExtResource("2_ifgnm")
+region = Rect2(768, 118, 128, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fg0l"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v58v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fg0l"]
-size = Vector2(69, 66)
+size = Vector2(101, 86)
 
 [node name="Virus" type="Area2D" unique_id=1297634187]
 script = ExtResource("1_ifgnm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1047752530]
-position = Vector2(1.5, 3.5)
-scale = Vector2(0.5234375, 0.5078125)
-texture = ExtResource("2_8v58v")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1786859263]
+sprite_frames = SubResource("SpriteFrames_8fg0l")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2019947191]
-position = Vector2(0.5, 3)
+position = Vector2(-13, 1)
 shape = SubResource("RectangleShape2D_8fg0l")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

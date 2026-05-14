@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cewpobkut2oax"]
+
+[ext_resource type="Script" uid="uid://c6gctwkh37ilv" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://cicfaqnj0kw5u" path="res://background menu.png" id="2_jix8l"]
+[ext_resource type="FontFile" uid="uid://dksex2dkoh4ut" path="res://Orbitron-VariableFont_wght.ttf" id="3_glbon"]
+
+[node name="MainMenu" type="Control" unique_id=1048475657]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fu7sn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2140139667]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+texture = ExtResource("2_jix8l")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="." unique_id=1265080468]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 105.0
+offset_right = 909.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(0.54509807, 0, 0.54509807, 1)
+theme_override_colors/font_shadow_color = Color(0.9218849, 0, 1.3427209, 1)
+theme_override_colors/font_outline_color = Color(18.892157, 15.018564, 18.892157, 1)
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 64
+text = "AVOID THE VIRUS"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1265207473]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1502802912]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 32
+text = "START GAME"
+
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=1314641720]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
